@@ -1,0 +1,19 @@
+﻿EVALUATE
+//VALUES(TB_PRODUTOS)
+//ROW ( "TOTAL LUCRO", [TOTAL LUCRO])
+//ROW (
+//    "teste",
+//        SUMX (
+//            Tb_ItensNotas,
+//            IF (
+//                Tb_ItensNotas[Quantidade] > 20,
+//                [Total Vendas] * 1.3,
+//                [Total Vendas] * 0.5
+//            )
+//        )
+//)
+ROW (
+    "Teste",
+        CALCULATE ( [Total Vendas] * 1.3, Tb_ItensNotas[Quantidade] > 20 )
+            + CALCULATE ( [Total Vendas] * 0.5, NOT ( Tb_ItensNotas[Quantidade] > 20 ) )
+)
