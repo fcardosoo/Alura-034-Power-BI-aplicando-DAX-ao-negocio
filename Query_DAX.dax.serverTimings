@@ -1,0 +1,62 @@
+{
+  "FileFormatVersion": 5,
+  "ActivityID": "B28A14C6-3BAD-4046-83BC-42D04EB87C73",
+  "FormulaEngineDuration": 3,
+  "StorageEngineEvents": [
+    {
+      "Class": "VertiPaqSEQueryCacheMatch",
+      "Subclass": "VertiPaqCacheExactMatch",
+      "Query": "SET DC_KIND=\"AUTO\";\r\nWITH\r\n\t$Expr0 := ( CAST ( PFCAST ( 'Tb_ItensNotas'[Quantidade] AS INT ) AS REAL ) * PFCAST ( 'Tb_Produtos'[Preço] AS REAL ) ) \r\nSELECT\r\n\tSUM ( @$Expr0 )\r\nFROM 'Tb_ItensNotas'\r\n\tLEFT OUTER JOIN 'Tb_Produtos'\r\n\t\tON 'Tb_ItensNotas'[Codigo do produto]='Tb_Produtos'[Codigo do produto]\r\nWHERE\r\n\t ( PFCASTCOALESCE ( 'Tb_ItensNotas'[Quantidade] AS INT ) > COALESCE ( 20 ) ) ;\r\n",
+      "RowNumber": 1,
+      "StartTime": "2023-06-26T16:24:43.846667-03:00",
+      "StartOffsetMs": 3,
+      "TotalQueryDuration": 4
+    },
+    {
+      "Class": "VertiPaqSEQueryEnd",
+      "Subclass": "VertiPaqScan",
+      "Query": "SET DC_KIND=\"AUTO\";\r\nWITH\r\n\t$Expr0 := ( CAST ( PFCAST ( 'Tb_ItensNotas'[Quantidade] AS INT ) AS REAL ) * PFCAST ( 'Tb_Produtos'[Preço] AS REAL ) ) \r\nSELECT\r\n\tSUM ( @$Expr0 )\r\nFROM 'Tb_ItensNotas'\r\n\tLEFT OUTER JOIN 'Tb_Produtos'\r\n\t\tON 'Tb_ItensNotas'[Codigo do produto]='Tb_Produtos'[Codigo do produto]\r\nWHERE\r\n\t ( PFCASTCOALESCE ( 'Tb_ItensNotas'[Quantidade] AS INT ) > COALESCE ( 20 ) ) ;\r\n\r\n\r\nEstimated size: rows = 1  bytes = 16\r\n",
+      "Duration": 0,
+      "NetParallelDuration": 0,
+      "CpuTime": 0,
+      "RowNumber": 2,
+      "EstimatedRows": 1,
+      "EstimatedKBytes": 1,
+      "StartTime": "2023-06-26T16:24:43.846667-03:00",
+      "EndTime": "2023-06-26T16:24:43.846667-03:00",
+      "StartOffsetMs": 3,
+      "TotalQueryDuration": 4
+    },
+    {
+      "Class": "VertiPaqSEQueryCacheMatch",
+      "Subclass": "VertiPaqCacheExactMatch",
+      "Query": "SET DC_KIND=\"AUTO\";\r\nWITH\r\n\t$Expr0 := ( CAST ( PFCAST ( 'Tb_ItensNotas'[Quantidade] AS INT ) AS REAL ) * PFCAST ( 'Tb_Produtos'[Preço] AS REAL ) ) \r\nSELECT\r\n\tSUM ( @$Expr0 )\r\nFROM 'Tb_ItensNotas'\r\n\tLEFT OUTER JOIN 'Tb_Produtos'\r\n\t\tON 'Tb_ItensNotas'[Codigo do produto]='Tb_Produtos'[Codigo do produto]\r\nWHERE\r\n\tNOT COALESCE ( ( PFCASTCOALESCE ( 'Tb_ItensNotas'[Quantidade] AS INT ) > COALESCE ( 20 ) ) ) ;\r\n",
+      "RowNumber": 3,
+      "StartTime": "2023-06-26T16:24:43.846667-03:00",
+      "StartOffsetMs": 3,
+      "TotalQueryDuration": 4
+    },
+    {
+      "Class": "VertiPaqSEQueryEnd",
+      "Subclass": "VertiPaqScan",
+      "Query": "SET DC_KIND=\"AUTO\";\r\nWITH\r\n\t$Expr0 := ( CAST ( PFCAST ( 'Tb_ItensNotas'[Quantidade] AS INT ) AS REAL ) * PFCAST ( 'Tb_Produtos'[Preço] AS REAL ) ) \r\nSELECT\r\n\tSUM ( @$Expr0 )\r\nFROM 'Tb_ItensNotas'\r\n\tLEFT OUTER JOIN 'Tb_Produtos'\r\n\t\tON 'Tb_ItensNotas'[Codigo do produto]='Tb_Produtos'[Codigo do produto]\r\nWHERE\r\n\tNOT COALESCE ( ( PFCASTCOALESCE ( 'Tb_ItensNotas'[Quantidade] AS INT ) > COALESCE ( 20 ) ) ) ;\r\n\r\n\r\nEstimated size: rows = 1  bytes = 16\r\n",
+      "Duration": 0,
+      "NetParallelDuration": 0,
+      "CpuTime": 0,
+      "RowNumber": 4,
+      "EstimatedRows": 1,
+      "EstimatedKBytes": 1,
+      "StartTime": "2023-06-26T16:24:43.846667-03:00",
+      "EndTime": "2023-06-26T16:24:43.846667-03:00",
+      "StartOffsetMs": 3,
+      "TotalQueryDuration": 4
+    }
+  ],
+  "TotalDuration": 3,
+  "StorageEngineQueryCount": 2,
+  "VertipaqCacheMatches": 2,
+  "QueryEndDateTime": "2023-06-26T16:24:43.846667-03:00",
+  "QueryStartDateTime": "2023-06-26T16:24:43.843333-03:00",
+  "CommandText": "EVALUATE\n//VALUES(TB_PRODUTOS)\n//ROW ( \"TOTAL LUCRO\", [TOTAL LUCRO])\n//ROW (\n//    \"teste\",\n//        SUMX (\n//            Tb_ItensNotas,\n//            IF (\n//                Tb_ItensNotas[Quantidade] > 20,\n//                [Total Vendas] * 1.3,\n//                [Total Vendas] * 0.5\n//            )\n//        )\n//)\nROW (\n    \"Teste\",\n        CALCULATE ( [Total Vendas] * 1.3, Tb_ItensNotas[Quantidade] > 20 )\n            + CALCULATE ( [Total Vendas] * 0.5, NOT ( Tb_ItensNotas[Quantidade] > 20 ) )\n)",
+  "TimelineTotalDuration": 4
+}
